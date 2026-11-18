@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Surprise For You</title>
+
+    <style>
+.envelope {
+    background: #ffe0ec;
+    padding: 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.envelope:hover {
+    transform: scale(1.05);
+}
+
+.envelope-icon {
+    font-size: 70px;
+}
+
+.letter {
+    background: #fff5f8;
+    border: 1px solid #ffd1e2;
+    padding: 20px;
+    border-radius: 18px;
+    margin-top: 20px;
+}
+
+.letter h2 {
+    color: #e75480;
+}
+
+.letter p {
+    line-height: 1.8;
+}
+
+.hidden {
+    display: none;
+}
+
+.open-animation {
+    animation: appear 1s ease;
+}
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(20deg);
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(-20deg);
+        opacity: 0;
+    }
+}
+.decorations span {
+    position: fixed;
+    bottom: -50px;
+    font-size: 25px;
+    animation: floatUp 8s linear infinite;
+    pointer-events: none;
+}
+.decorations span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.decorations span:nth-child(2) {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.decorations span:nth-child(3) {
+    left: 40%;
+    animation-delay: 4s;
+}
+
+.decorations span:nth-child(4) {
+    left: 60%;
+    animation-delay: 1s;
+}
+
+.decorations span:nth-child(5) {
+    left: 75%;
+    animation-delay: 3s;
+}
+
+.decorations span:nth-child(6) {
+    left: 90%;
+    animation-delay: 5s;
+}
+
+.decorations span:nth-child(7) {
+    left: 50%;
+    animation-delay: 6s;
+}
+        body {
+            background: linear-gradient(135deg, #ffe4ec, #fff5f8);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 25px;
+            width: 85%;
+            max-width: 400px;
+            box-shadow: 0 10px 35px rgba(220, 100, 150, 0.2);
+        }
+
+        .heart {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #e75480;
+            font-size: 30px;
+        }
+
+        p {
+            color: #777;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        button {
+            background: #ff69a6;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e84387;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .reveal {
+            animation: appear 1s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="decorations">
+    <span>💗</span>
+    <span>🌸</span>
+    <span>💕</span>
+    <span>✨</span>
+    <span>🌷</span>
+    <span>💖</span>
+    <span>🦋</span>
+</div>
+
+    <div class="card" id="welcome">
+        <div class="heart">💗</div>
+
+        <h1>Hey, Princess 👑</h1>
+
+        <p>I have something special for you...</p>
+
+        <button id="openBtn">Open Your Surprise 💌</button>
+    </div>
+
+    <div class="card hidden" id="message">
+      <div class="heart">💌</div>
+
+<h1>A Letter For You</h1>
+
+<p>Someone has something to tell you...</p>
+
+<div id="envelope" class="envelope" onclick="openLetter()">
+    <div class="envelope-icon">💌</div>
+    <p>Tap to open</p>
+</div>
+
+<div id="letter" class="letter hidden">
+    <h2>Dear Princess 🌷</h2>
+
+    <p>
+        You are one of the most beautiful souls in this world.
+        Never stop smiling and never forget how special you are.
+    </p>
+
+    <p>
+        May your life be filled with happiness, love,
+        laughter and beautiful memories. 💖
+    </p>
+
+    <p>With love, always ✨</p>
+    </div>
+
+    <script>
+        const openBtn = document.getElementById("openBtn");
+        const welcome = document.getElementById("welcome");
+        const message = document.getElementById("message");
+
+        openBtn.addEventListener("click", function() {
+            welcome.classList.add("hidden");
+            message.classList.remove("hidden");
+            message.classList.add("reveal");
+        });
+    function openLetter() {
+    const envelope = document.getElementById("envelope");
+    const letter = document.getElementById("letter");
+
+    envelope.style.display = "none";
+
+    letter.classList.remove("hidden");
+    letter.classList.add("open-animation");
+}
+    </script>
+
+</body>
+</html>
